@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            text-align: left;
+        }
+        form {
+            width: 300px;
+            margin: 0 auto;
+            background-color: yellow;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+
+        }
+        input[type="submit"] {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<form id="registrationForm">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" onkeyup="this.value = this.value.toUpperCase();"><br>
+    <label for="surname">Surname:</label><br>
+    <input type="text" id="surname" name="surname"><br>
+    <label for="dob">Date of Birth:</label><br>
+    <input type="date" id="dob" name="dob"><br>
+    <label for="address">Address:</label><br>
+    <input type="text" id="address" name="address"><br>
+    <label for="phone">Phone No:</label><br>
+    <input type="tel" id="phone" name="phone"><br>
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email"><br>
+    <label for="zip">ZIP:</label><br>
+    <input type="text" id="zip" name="zip"><br>
+    <input type="submit" value="Register">
+</form>
+
+<script>
+    function validateEmail(email) {
+        const re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
+
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+
+        if (!validateEmail(email)) {
+            alert('Please enter a valid email address.');
+            return;
+        }
+
+        alert('Registration successful!\nName: ' + name + '\nEmail: ' + email);
+    });
+</script>
+
+</body>
+</html>

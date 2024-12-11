@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<style>
+    input:focus {
+        background-color: lightblue;
+    }
+</style>
+</head>
+<body onload="showAlert()">
+    <h2 align="center">Login Page</h2>
+    <form id="loginForm"  align="center" onsubmit="return validateForm()">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required onfocus="changeBackgroundColor(this)">
+        </div> <br>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required onblur="showAlertOnBlur()">
+        </div> <br>
+        <button type="submit">Login</button>
+    </form>
+
+    <script>
+        function showAlert() {
+            alert("Page loaded!");
+        }
+
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            if (username === "" || password === "") {
+                alert("Username and password are compulsory");
+                return false;
+            }
+
+            return true;
+        }
+
+        function changeBackgroundColor(element) {
+            element.style.backgroundColor = "lightblue";
+        }
+
+        function showAlertOnBlur() {
+            alert("Please click on Login button");
+        }
+    </script>
+</body>
+</html>

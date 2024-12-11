@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employee Details Validation</title>
+  <script>
+    function validateForm() {
+      var name = document.forms["employeeForm"]["name"].value;
+      var age = document.forms["employeeForm"]["age"].value;
+      var department = document.forms["employeeForm"]["department"].value;
+      var designation = document.forms["employeeForm"]["designation"].value;
+      var salary = document.forms["employeeForm"]["salary"].value;
+      var workingDays = document.forms["employeeForm"]["workingDays"].value;
+      
+      // Validate Name
+      if (name == "") {
+        alert("Name must be filled out");
+        return false;
+      }
+      
+      // Validate Age
+      if (isNaN(age) || age <= 18) {
+        alert("Age must be a number greater than 18.");
+        return false;
+      }
+      
+      // Validate Department
+      if (department == "") {
+        alert("Department must be filled out");
+        return false;
+      }
+      
+      // Validate Designation
+      if (designation == "") {
+        alert("Designation must be filled out");
+        return false;
+      }
+      
+      // Validate Salary and Working Days
+      if (workingDays > 25) {
+        if (salary != 10000) {
+          alert("Salary should be 10000 when No. Of Working Days > 25");
+          return false;
+        }
+      } else {
+        if (salary != 8000) {
+          alert("Salary should be 8000 when No. Of Working Days < 25");
+          return false;
+        }
+      }
+      
+      return true;
+    }
+  </script>
+</head>
+<body>
+
+<h2>Employee Details</h2>
+
+<form name="employeeForm" onsubmit="return validateForm()" method="post">
+  Name: <input type="text" name="name"><br>
+  Age: <input type="text" name="age"><br>
+  Department: <input type="text" name="department"><br>
+  Designation: <input type="text" name="designation"><br>
+  Salary: <input type="text" name="salary"><br>
+  No. Of Working Days: <input type="text" name="workingDays"><br>
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

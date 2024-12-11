@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Information Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .form-container {
+        margin: 20px auto;
+        width: 400px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    input[type="text"], select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    #user-info {
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>registrartion Form</h2>
+    <form id="user-form">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required>
+        
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required>
+        
+        <label for="gender">Gender:
+        <input type="radio"  name="gender" value="male"> male
+        <input type="radio" name="gender" value="female">female</label>s
+        
+        <label for="hobbies">Hobbies:
+        <input type="checkbox"  name="hobbies" value="dancing"> Dancing
+                <input type="checkbox"  name="hobbies" value="cricket"> cricket
+        <input type="checkbox"  name="hobbies" value="singing"> Singing</label>
+        
+        <label for="country">Country:</label>
+        <select id="country" name="country">
+            <option value ="USA">USA</option>
+            <option value="Canada">Canada</option>
+            <option value="UK">UK</option>
+            <option value="Australia">Australia</option>
+        </select>
+        
+        <input type="submit" value="Validate Fields">
+    </form>
+</div>
+
+<div id="user-info"></div>
+
+<script>
+    document.getElementById('user-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+        
+        // Validate fields
+        var firstName = document.getElementById('firstName').value;
+        var lastName = document.getElementById('lastName').value;
+        var gender = document.querySelector('input[name="gender"]:checked');
+        var hobbies = document.querySelectorAll('input[name="hobbies"]:checked');
+        
+        if (!firstName || !lastName || !gender || hobbies.length === 0) {
+            alert("All fields are required!");
+            return;
+        }
+        
+        // Display user information
+        var userInfo = document.getElementById('user-info');
+        userInfo.innerHTML = "<h2>User Information</h2>";
+        userInfo.innerHTML += "<p><strong>First Name:</strong> " + firstName + "</p>";
+        userInfo.innerHTML += "<p><strong>Last Name:</strong> " + lastName + "</p>";
+        userInfo.innerHTML += "<p><strong>Gender:</strong> " + gender.value + "</p>";
+        userInfo.innerHTML += "<p><strong>Hobbies:</strong> ";
+        hobbies.forEach(function(hobby) {
+            userInfo.innerHTML += hobby.value + ", ";
+        });
+        userInfo.innerHTML = userInfo.innerHTML.slice(0, -2) + "</p>";
+        userInfo.innerHTML += "<p><strong>Country:</strong> " + document.getElementById('country').value + "</p>";
+    });
+</script>
+
+</body>
+</html>

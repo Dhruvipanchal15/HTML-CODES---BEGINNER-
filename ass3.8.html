@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up Form</title>
+  <script>
+    function validateForm() {
+      var fullName = document.forms["signupForm"]["fullName"].value;
+      var email = document.forms["signupForm"]["email"].value;
+      var password = document.forms["signupForm"]["password"].value;
+      var retypePassword = document.forms["signupForm"]["retypePassword"].value;
+
+      // Validate Full Name
+      if (fullName == "") {
+        alert("Full Name must not be blank.");
+        return false;
+      }
+
+      // Validate Email
+      if (!validateEmail(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+
+      // Validate Password
+      if (password.length <= 8) {
+        alert("Password must be greater than 8 characters.");
+        return false;
+      }
+
+      // Validate Retyped Password
+      if (password !== retypePassword) {
+        alert("Retyped password does not match.");
+        return false;
+      }
+
+      return true;
+    }
+
+    function validateEmail(email) {
+      // Basic email validation using regular expression
+      var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(email);
+    }
+  </script>
+</head>
+<body>
+
+<h2>Sign Up Form</h2>
+
+<form name="signupForm" onsubmit="return validateForm()" method="post">
+  Full Name: <input type="text" name="fullName"><br>
+  Email: <input type="text" name="email"><br>
+  Password: <input type="password" name="password"><br>
+  Retype Password: <input type="password" name="retypePassword"><br>
+  <input type="submit" value="Sign Up">
+</form>
+
+</body>
+</html>

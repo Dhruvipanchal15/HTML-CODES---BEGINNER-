@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Validation</title>
+  <script>
+    function validateForm() {
+      var name = document.forms["myForm"]["name"].value;
+      var age = document.forms["myForm"]["age"].value;
+      
+      // Validate Name
+      if (name.length < 5 || name.length > 15 || !/^[a-zA-Z]+$/.test(name)) {
+        alert("Name must be between 5 to 15 characters and contain only letters.");
+        return false;
+      }
+      
+      // Validate Age
+      if (isNaN(age) || age <= 18) {
+        alert("Age must be a number greater than 18.");
+        return false;
+      }
+      
+      return true;
+    }
+  </script>
+</head>
+<body>
+
+<h2>Form Validation</h2>
+
+<form name="myForm" onsubmit="return validateForm()" method="post">
+  Name: <input type="text" name="name"><br>
+  Age: <input type="text" name="age"><br>
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

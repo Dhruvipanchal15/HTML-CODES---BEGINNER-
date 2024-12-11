@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Details</title>
+  <script>
+    function calculateResult() {
+      // Retrieve student details
+      var name = document.getElementById("name").value;
+      var semester = document.getElementById("semester").value;
+      var subject1 = parseFloat(document.getElementById("subject1").value);
+      var subject2 = parseFloat(document.getElementById("subject2").value);
+      var subject3 = parseFloat(document.getElementById("subject3").value);
+      // Validate marks fields to contain numbers only
+      if (isNaN(subject1) || isNaN(subject2) || isNaN(subject3)) {
+        alert("Marks should be numbers only.");
+        return;
+      }
+
+      // Validate name to contain only characters
+      if (!/^[a-zA-Z\s]+$/.test(name)) {
+        alert("Name should contain only characters.");
+        return;
+      }
+
+      // Calculate total and average marks
+      var totalMarks = subject1 + subject2 + subject3;
+      var averageMarks = totalMarks / 3;
+
+      // Display results
+      var result = "Name: " + name + "\n";
+      result += "Semester: " + semester + "\n";
+      result += "Marks of Subject 1: " + subject1 + "\n";
+      result += "Marks of Subject 2: " + subject2 + "\n";
+      result += "Marks of Subject 3: " + subject3 + "\n";
+      result += "Total Marks: " + totalMarks + "\n";
+      result += "Average Marks: " + averageMarks.toFixed(2) + "\n";
+
+      alert(result);
+    }
+  </script>
+</head>
+<body>
+
+<h2>Student Details</h2>
+
+<form>
+  Name: <input type="text" id="name"><br>
+  Semester: <input type="text" id="semester"><br>
+  Marks of Subject 1: <input type="text" id="subject1"><br>
+  Marks of Subject 2: <input type="text" id="subject2"><br>
+  Marks of Subject 3: <input type="text" id="subject3"><br>
+  <button type="button" onclick="calculateResult()">Calculate Result</button>
+</form>
+</body>
+</html>

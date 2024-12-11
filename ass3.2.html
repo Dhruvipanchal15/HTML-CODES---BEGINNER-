@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subscribe to our mailing list</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+   #subscription-form {
+        margin: 20px auto;
+        width: 300px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    input[type="text"], input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+    }
+    #subscription-info {
+        margin-top: 20px;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+
+<div id="subscription-form">
+    <h2>Subscribe</h2>
+    <form id="subscribe-form">
+        <input type="text" id="email" name="email" placeholder="Email Address">
+        <input type="text" id="firstName" name="firstName" placeholder="First Name">
+        <input type="text" id="lastName" name="lastName" placeholder="Last Name">
+        <input type="submit" value="Subscribe">
+    </form>
+</div>
+
+<div id="subscription-info"></div>
+
+<script>
+    document.getElementById('subscribe-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+        var email = document.getElementById('email').value; // Get the entered email
+        var firstName = document.getElementById('firstName').value; // Get the entered first name
+        var lastName = document.getElementById('lastName').value; // Get the entered last name
+        var subscriptionInfo = document.getElementById('subscription-info');
+        subscriptionInfo.innerHTML = "<p>Email Address: <span>" + email + "</span></p>"; // Display email
+        subscriptionInfo.innerHTML += "<p>First Name: <span>" + firstName + "</span></p>"; // Display first name
+        subscriptionInfo.innerHTML += "<p>Last Name: <span>" + lastName + "</span></p>"; // Display last name
+        document.getElementById('email').value = ''; // Clear the email input field after submission
+       document.getElementById('firstName').value = ''; // Clear the first name input field after submission
+    document.getElementById('lastName').value = ''; // Clear the last name input field after submission
+    });
+</script>
+
+</body>
+</html>

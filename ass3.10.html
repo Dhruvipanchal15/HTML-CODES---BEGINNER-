@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>  Form Validation     </title>
+<style>
+  body {
+    background-color: purple;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+  form {
+    width: 300px;
+    margin: 0 auto;
+    text-align: initial;
+  }
+  input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+  }
+  input[type="submit"] {
+    background-color: white;
+    color: purple;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  input[type="submit"]:hover {
+    background-color: #f0f0f0;
+  }
+</style>
+</head>
+<body>
+
+<h2>Registration Form</h2>
+
+<form id="registrationForm">
+  Name: <input type="text" id="name" required><br>
+  Email: <input type="text" id="email" required><br>
+  Password: <input type="password" id="password" required><br>
+  Phone No: <input type="text" id="phone" required><br>
+  Zipcode: <input type="text" id="zipcode" required><br>
+  <input type="submit" value="Register">
+</form>
+
+<div id="registrationDetails" style="display: none;">
+  <h2>Registration Details</h2>
+  <p id="nameOutput"></p>
+  <p id="emailOutput"></p>
+  <p id="phoneOutput"></p>
+  <p id="zipcodeOutput"></p>
+</div>
+
+<script>
+  document.getElementById("registrationForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    var phone = document.getElementById("phone").value;
+    var zipcode = document.getElementById("zipcode").value;
+
+    if (!validateName(name) || !validateEmail(email) || !validatePassword(password) || !validatePhone(phone) || !validateZipcode(zipcode)) {
+      return;
+    }
+
+    document.getElementById("nameOutput").innerText = "Name: " + name;
+    document.getElementById("emailOutput").innerText = "Email: " + email;
+    document.getElementById("phoneOutput").innerText = "Phone No: " + phone;
+    document.getElementById("zipcodeOutput").innerText = "Zipcode: " + zipcode;
+
+    document.getElementById("registrationDetails").style.display = "block";
+  });
+
+  function validateName(name) {
+    if (!/^[a-zA-Z]{6}$/.test(name)) {
+      alert("Name should be of 6 alphabets only.");
+      return false;
+    }
+    return true;
+  }
+
+  function validateEmail(email) {
+    if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email)) {
+      alert("Please enter a valid email address.");
+      return false;
+    }
+    return true;
+  }
+
+  function validatePassword(password) {
+    if (password.length !== 10) {
+      alert("Password should be 10 characters only.");
+      return false;
+    }
+    return true;
+  }
+
+  function validatePhone(phone) {
+    if (!/^\d{10}$/.test(phone)) {
+      alert("Phone no should be of 10 digits only.");
+      return false;
+    }
+    return true;
+  }
+
+  function validateZipcode(zipcode) {
+    if (!/^\d{6}$/.test(zipcode)) {
+      alert("Zipcode should be of 6 digits only.");
+      return false;
+    }
+    return true;
+  }
+</script>
+
+</body>
+</html>

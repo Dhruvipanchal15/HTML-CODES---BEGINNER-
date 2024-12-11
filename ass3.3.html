@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"], input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2> student Registration Form</h2>
+    <form id="registrationForm" onsubmit="return validateForm()">
+        <label for="firstName">First Name:</label><br>
+        <input type="text" id="firstName" name="firstName" pattern="[A-Za-z]+" required><br>
+        <label for="lastName">Last Name:</label><br>
+        <input type="text" id="lastName" name="lastName" pattern="[A-Za-z]+" required><br>
+        <label for="phoneNo">Phone No:</label><br>
+        <input type="tel" id="phoneNo" name="phoneNo" pattern="[0-9]{10}" required><br>
+        <label for="address">address:</label><br>
+        <input type="text" id="address" name="address" pattern="[A-Za-z]+" required><br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<script>
+    function validateForm() {
+        var firstName = document.getElementById('firstName').value;
+        var lastName = document.getElementById('lastName').value;
+        var address = document.getElementById('address').value;
+        var phoneNo = document.getElementById('phoneNo').value;
+
+        var firstNamePattern = /^[A-Za-z]+$/;
+        var phoneNoPattern = /^[0-9]{10}$/;
+
+        if (!firstName.match(firstNamePattern)) {
+            alert('First Name should contain only alphabets.');
+            return false;
+        }
+
+        if (!lastName.match(firstNamePattern)) {
+            alert('Last Name should contain only alphabets.');
+            return false;
+        }
+
+        if (!phoneNo.match(phoneNoPattern)) {
+            alert('Phone No should be of 10 digits only.');
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
+</body>
+</html>

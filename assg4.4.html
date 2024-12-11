@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Form</title>
+<style>
+    input:focus {
+        background-color: lightblue;
+    }
+</style>
+</head>
+<body>
+    <h2>Login Form</h2>
+    <form id="loginForm" onsubmit="return displayInfo()">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required onselect="changeBackgroundColor(this)">
+        </div>
+        <div>
+            <label>Password:</label>
+                        <input type="password" id="password" required> 
+            <label for="city of employee"></label>
+            <input type="text" name="city">
+        </div>
+        <div>
+            <label for="webServer">Web Server:</label>
+            <select id="webServer" name="webServer" onchange="displayAlert()">
+                <option value="Apache" >Apache</option>
+                <option value="Nginx">Nginx</option>
+                <option value="IIS">IIS</option>
+            </select>
+           <p> select your role: </p>
+           <input type="radio" name="engineer">engineer <br>
+            <input type="radio" name="admin">admin <br>
+             <input type="radio" name="guest"> guest <br>
+              <input type="radio" name="manager">manager <br>
+                      </div>
+                      <p> single sign-on:</p>
+                      <input type="checkbox"  name="mail"> mail <br>
+                      <input type="checkbox" name="payroll"> payroll<br>
+                      <input type="checkbox" name="service"> service <br>
+
+        <button type="submit">Login</button> 
+        <button type="reset">Reset</button>
+    </form>
+
+    <script>
+        function displayAlert() {
+            alert("Web server changed!");
+        }
+
+        function displayInfo() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var webServer = document.getElementById("webServer").value;
+
+            if (username === "" || password === "" || webServer === "") {
+                alert("All fields are compulsory.");
+                return false;
+            }
+
+            alert("Username: " + username + "\nPassword: " + password + "\nWeb Server: " + webServer);
+            return true;
+        }
+
+        function changeBackgroundColor(element) {
+            element.style.backgroundColor = "lightblue";
+        }
+    </script>
+</body>
+</html>

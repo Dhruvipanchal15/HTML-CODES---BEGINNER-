@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Numbers Recursively</title>
+</head>
+<body>
+
+<h1>Print Numbers Recursively</h1>
+
+<script>
+// Recursive function to print numbers
+function printNumbers(n) {
+    if (n > 0) {
+        // Print the current number
+        document.write(n + "<br>");
+        // Recursive call with n-1
+        printNumbers(n - 1);
+    }
+}
+
+// Call the function with an initial value
+var initialNumber = 5;
+document.write("<h3>Printing numbers from " + initialNumber + " to 1:</h3>");
+printNumbers(initialNumber);
+</script>
+
+</body>
+</html>
